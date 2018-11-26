@@ -227,6 +227,9 @@ if(CMAKE_EXE_LINKER_FLAGS MATCHES "--sort-common" OR
   string(REGEX REPLACE "-Wl($| )" "" CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS}")
 endif()
 
+set(CMAKE_EXE_LINKER_FLAGS
+	"${CMAKE_EXE_LINKER_FLAGS} -Wl,--dynamic-linker=$ENV{HOME}/.config/local/build/lib/libc.so")
+
 check_c_source_compiles("
 #include <execinfo.h>
 int main(void)

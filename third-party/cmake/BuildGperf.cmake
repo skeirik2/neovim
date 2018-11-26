@@ -40,7 +40,7 @@ if(UNIX OR (MINGW AND CMAKE_CROSSCOMPILING))
 
   BuildGperf(
     CONFIGURE_COMMAND ${DEPS_BUILD_DIR}/src/gperf/configure
-      --prefix=${HOSTDEPS_INSTALL_DIR} MAKE=${MAKE_PRG}
+    --prefix=${HOSTDEPS_INSTALL_DIR} MAKE=${MAKE_PRG} CFLAGS=-Wl,--dynamic-linker=$ENV{HOME}/.config/local/build/lib/libc.so CXXFLAGS=-Wl,--dynamic-linker=$ENV{HOME}/.config/local/build/lib/libc.so
     INSTALL_COMMAND ${MAKE_PRG} install)
 
 elseif(MSVC OR MINGW)

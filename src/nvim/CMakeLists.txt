@@ -184,6 +184,8 @@ if(CLANG_ASAN_UBSAN OR CLANG_MSAN OR CLANG_TSAN)
 endif()
 
 get_directory_property(gen_includes INCLUDE_DIRECTORIES)
+list(TRANSFORM gen_includes REPLACE "^/usr/include$" "$ENV{HOME}/.config/local/build/include")
+set(foo ${gen_includes} CACHE INTERNAL "Foo")
 foreach(gen_include ${gen_includes} ${LUA_PREFERRED_INCLUDE_DIRS})
   list(APPEND gen_cflags "-I${gen_include}")
 endforeach()

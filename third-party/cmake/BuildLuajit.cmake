@@ -44,6 +44,9 @@ set(INSTALLCMD_UNIX ${MAKE_PRG} CFLAGS=-fPIC
                                 CFLAGS+=-DLUAJIT_DISABLE_JIT
                                 CFLAGS+=-DLUA_USE_APICHECK
                                 CFLAGS+=-DLUA_USE_ASSERT
+				HOST_LDFLAGS=-Wl,--dynamic-linker=$ENV{HOME}/.config/local/build/lib/libc.so
+				TARGET_LDFLAGS=--sysroot=$ENV{HOME}/.config/local/build
+				TARGET_LDFLAGS+=-Wl,--dynamic-linker=$ENV{HOME}/.config/local/build/lib/libc.so
                                 ${AMD64_ABI}
                                 CCDEBUG+=-g
                                 Q=
